@@ -31,6 +31,15 @@ function convert(){
     document.getElementById("demo").innerHTML = `${parseInt(amountInput)} ${fromValue}=${notification} ${toValue}`;
 }
 
+function exchange(){
+    amountInput=parseInt(amount.value);
+    const fromValue = document.getElementById("currency2").value;
+    const toValue = document.getElementById("currency1").value;
+    const result = ((USD[toValue] / USD[fromValue]) *amountInput).toFixed(2);
+    const notification = showResult(toValue, result)
+    document.getElementById("demo").innerHTML = `${parseInt(amountInput)} ${fromValue}=${notification} ${toValue}`;
+}
+
 
 
 
@@ -42,10 +51,10 @@ function convert(){
     console.log(toValue);
     console.log("This is " + result);
     toValue === "USD" ? convertedValue = formatCurrency('en-US', "USD", result): ""
-    toValue === "VND" ? convertedValue = formatCurrency('vi', "VND", result) : ""
-    toValue === "EUR" ? convertedValue = formatCurrency('de-DE', "EUR", result) : ""
-    
-    toValue === "CNY" ? convertedValue = formatCurrency('zh-CN', "CNY", result) : ""
+    toValue === "VND" ? convertedValue = formatCurrency('vi', "VND", result): ""
+    toValue === "EUR" ? convertedValue = formatCurrency('de-DE', "EUR", result): ""
+    toValue == "KRW" ? convertedValue = formatCurrency('ko-KR', "KRW", result): ""
+    toValue === "CNY" ? convertedValue = formatCurrency('zh-CN', "CNY", result):""
 
     console.log("what is convertedValue",convertedValue);
     return convertedValue;
@@ -53,3 +62,4 @@ function convert(){
 
 
 document.getElementById("convertCurrencyBtn").onclick= function() { convert(); }
+document.getElementById("exchangeCurrencyBtn").onclick=function() {exchange();}
